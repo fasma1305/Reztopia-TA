@@ -29,7 +29,7 @@
     </form>
     <div class="text-center mt-5 text-lg fs-4">
         {{-- <p class="text-gray-600">Don't have an account? <a href="{{ route('register') }}" class="font-bold">Sign
-    up</a>.</p> --}}
+                up</a>.</p> --}}
         <p><a class="font-bold" href="{{ route('forgot-password') }}">Forgot password?</a>.</p>
     </div>
 @endsection
