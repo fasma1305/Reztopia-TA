@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Tenant as Tenant
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Tenant->>Boundary: Mengakses halaman kategori menu
+    Boundary->>Controller: Mengirim permintaan kategori menu
+    Controller->>Entity: Memperoleh data kategori menu
+    Entity-->>Controller: Mengembalikan data kategori menu
+    Controller-->>Boundary: Menampilkan kategori menu
+    Boundary-->>Tenant: Menampilkan kategori menu

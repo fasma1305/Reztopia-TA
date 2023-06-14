@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Admin as Admin
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Admin->>Boundary: Mengakses dashboard
+    Boundary->>Controller: Mengirim permintaan dashboard
+    Controller->>Entity: Memperoleh data dashboard
+    Entity-->>Controller: Mengembalikan data dashboard
+    Controller-->>Boundary: Menampilkan dashboard
+    Boundary-->>Admin: Menampilkan dashboard

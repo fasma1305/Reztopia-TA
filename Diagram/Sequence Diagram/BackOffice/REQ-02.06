@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Tenant as Tenant
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Tenant->>Boundary: Memilih laporan penjualan
+    Boundary->>Controller: Mengirim permintaan laporan penjualan
+    Controller->>Entity: Memperoleh data penjualan
+    Entity-->>Controller: Mengembalikan data penjualan
+    Controller-->>Boundary: Menampilkan laporan penjualan
+    Boundary-->>Tenant: Menampilkan laporan penjualan

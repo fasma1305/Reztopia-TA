@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Admin as Admin
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Admin->>Boundary: Memilih logout
+    Boundary->>Controller: Mengirim permintaan logout
+    Controller->>Entity: Melakukan proses logout
+    Entity-->>Controller: Konfirmasi logout berhasil
+    Controller-->>Boundary: Mengirim konfirmasi logout
+    Boundary-->>Admin: Menampilkan konfirmasi logout

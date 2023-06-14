@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Tenant as Tenant
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Tenant->>Boundary: Memasukkan kredensial login
+    Boundary->>Controller: Mengirim permintaan login
+    Controller->>Entity: Memeriksa kredensial login
+    Entity-->>Controller: Mengembalikan status login
+    Controller-->>Boundary: Memberikan status login
+    Boundary-->>Tenant: Menampilkan status login

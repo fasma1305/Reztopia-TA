@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Tenant as Tenant
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Tenant->>Boundary: Mengakses dashboard
+    Boundary->>Controller: Mengirim permintaan dashboard
+    Controller->>Entity: Memperoleh data laporan penjualan dan daftar produk terlaris
+    Entity-->>Controller: Mengembalikan data laporan penjualan dan daftar produk terlaris
+    Controller-->>Boundary: Menampilkan dashboard
+    Boundary-->>Tenant: Menampilkan dashboard

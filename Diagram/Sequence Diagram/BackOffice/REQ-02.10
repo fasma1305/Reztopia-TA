@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Admin as Admin
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Admin->>Boundary: Memasukkan credentials
+    Boundary->>Controller: Mengirim permintaan login
+    Controller->>Entity: Memverifikasi credentials
+    Entity-->>Controller: Konfirmasi verifikasi
+    Controller-->>Boundary: Mengirim status login
+    Boundary-->>Admin: Menampilkan status login

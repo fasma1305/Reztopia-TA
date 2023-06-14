@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant Tenant as Tenant
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Tenant->>Boundary: Mengakses halaman profil
+    Boundary->>Controller: Mengirim permintaan data profil
+    Controller->>Entity: Memperoleh data profil
+    Entity-->>Controller: Mengembalikan data profil
+    Controller-->>Boundary: Menampilkan data profil
+    Boundary-->>Tenant: Menampilkan data profil
+
+    Tenant->>Boundary: Mengirim permintaan perubahan profil
+    Boundary->>Controller: Mengirim data perubahan profil
+    Controller->>Entity: Memperbarui data profil
+    Entity-->>Controller: Konfirmasi perubahan profil
+    Controller-->>Boundary: Mengirim konfirmasi perubahan profil
+    Boundary-->>Tenant: Menampilkan konfirmasi perubahan profil

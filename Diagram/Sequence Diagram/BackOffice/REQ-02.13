@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant Admin as Admin
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Admin->>Boundary: Mengakses halaman manajemen tenant
+    Boundary->>Controller: Mengirim permintaan data tenant
+    Controller->>Entity: Memperoleh data tenant
+    Entity-->>Controller: Mengembalikan data tenant
+    Controller-->>Boundary: Menampilkan data tenant
+    Boundary-->>Admin: Menampilkan data tenant
+    Admin->>Boundary: Menambahkan tenant baru
+    Boundary->>Controller: Mengirim permintaan penambahan tenant
+    Controller->>Entity: Menyimpan data tenant baru
+    Entity-->>Controller: Mengembalikan konfirmasi penambahan
+    Controller-->>Boundary: Mengirim konfirmasi penambahan
+    Boundary-->>Admin: Menampilkan konfirmasi penambahan
+    Admin->>Boundary: Mengubah status tenant
+    Boundary->>Controller: Mengirim permintaan perubahan status tenant
+    Controller->>Entity: Mengubah status tenant
+    Entity-->>Controller: Mengembalikan konfirmasi perubahan status
+    Controller-->>Boundary: Mengirim konfirmasi perubahan status
+    Boundary-->>Admin: Menampilkan konfirmasi perubahan status
