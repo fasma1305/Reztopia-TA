@@ -1,0 +1,49 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Tenant|
+start
+:Memilih opsi "Menu";
+|Reztopia BackOffice|
+:Menampilkan halaman menu;
+|Tenant|
+:Memilih opsi "Kelola Kategori";
+|Reztopia BackOffice|
+:Menampilkan halaman kelola kategori;
+|Tenant|
+:Memilih opsi "Buat Kategori";
+|Reztopia BackOffice|
+:Menampilkan halaman pembuatan kategori;
+|Tenant|
+:Memasukkan detail kategori;
+|Reztopia BackOffice|
+:Mengkonfirmasi pembuatan kategori;
+|Tenant|
+:Memilih opsi "Ubah Kategori";
+|Reztopia BackOffice|
+:Menampilkan halaman pengubahan kategori;
+|Tenant|
+:Memilih kategori yang akan diubah;
+|Reztopia BackOffice|
+:Menampilkan halaman detail kategori;
+|Tenant|
+:Memperbarui detail kategori;
+|Reztopia BackOffice|
+:Mengkonfirmasi perubahan kategori;
+|Tenant|
+:Memilih opsi "Hapus Kategori";
+|Reztopia BackOffice|
+:Menampilkan konfirmasi penghapusan kategori;
+|Tenant|
+:Mengkonfirmasi penghapusan kategori;
+|Reztopia BackOffice|
+:Melakukan penghapusan kategori;
+stop
+@enduml

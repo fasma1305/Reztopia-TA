@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Admin|
+start
+:Memilih opsi "Laporan Penjualan";
+|Reztopia BackOffice|
+:Menampilkan halaman laporan penjualan;
+|Admin|
+:Memilih periode laporan;
+|Reztopia BackOffice|
+:Memproses permintaan laporan;
+:Memuat data penjualan tenant;
+|Admin|
+:Melihat rincian penjualan tenant;
+stop
+@enduml

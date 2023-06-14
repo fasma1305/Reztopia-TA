@@ -1,0 +1,25 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Tenant|
+start
+:Memilih opsi "Laporan Penjualan";
+|Reztopia BackOffice|
+:Menampilkan halaman laporan penjualan;
+|Tenant|
+:Memilih opsi "Rincian Harian" atau "Rincian Periode";
+if (Opsi = "Rincian Harian") then (yes)
+  :Memasukkan tanggal penjualan;
+else (no)
+  :Memasukkan rentang tanggal penjualan;
+endif
+:Menampilkan laporan penjualan berdasarkan pilihan;
+stop
+@enduml

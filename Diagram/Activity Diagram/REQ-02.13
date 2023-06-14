@@ -1,0 +1,55 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Admin|
+start
+:Memilih opsi "Data Profil";
+|Reztopia BackOffice|
+:Menampilkan halaman data profil;
+|Admin|
+:Memperbarui data profil;
+:Menyimpan data profil;
+|Reztopia BackOffice|
+:Memvalidasi data profil;
+if (Data valid?) then (yes)
+  :Memperbarui data profil;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman data profil;
+endif
+|Admin|
+:Memilih opsi "Tambah Tenant";
+:Memasukkan data tenant baru;
+:Menyimpan data tenant baru;
+|Reztopia BackOffice|
+:Memvalidasi data tenant baru;
+if (Data valid?) then (yes)
+  :Menambahkan tenant baru;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman data tenant;
+endif
+|Admin|
+:Memilih tenant yang akan diatur;
+:Memilih opsi "Aktifkan" atau "Non-Aktifkan";
+:Konfirmasi perubahan;
+|Reztopia BackOffice|
+:Memvalidasi konfirmasi;
+if (Konfirmasi valid?) then (yes)
+  :Mengatur status tenant;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman data tenant;
+endif
+stop
+@enduml

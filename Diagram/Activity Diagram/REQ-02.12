@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Admin|
+start
+:Memilih opsi "Dashboard";
+|Reztopia BackOffice|
+:Menampilkan dashboard;
+:Memperoleh data laporan penjualan pujasera;
+:Memperoleh data jumlah orderan;
+:Memperoleh data jumlah tenant aktif;
+:Memperoleh data jumlah tenant tidak aktif;
+:Memperoleh data daftar tenant terlaris;
+|Admin|
+:Melihat laporan penjualan pujasera;
+:Melihat jumlah orderan;
+:Melihat jumlah tenant aktif;
+:Melihat jumlah tenant tidak aktif;
+:Melihat daftar tenant terlaris;
+stop
+@enduml

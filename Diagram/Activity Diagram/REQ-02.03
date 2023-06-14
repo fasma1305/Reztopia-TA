@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Tenant|
+start
+:Masuk ke aplikasi Reztopia BackOffice;
+|Reztopia BackOffice|
+:Menampilkan dashboard;
+:Menampilkan laporan penjualan;
+:Menampilkan grafik penjualan;
+:Menampilkan daftar produk terlaris;
+stop
+@enduml

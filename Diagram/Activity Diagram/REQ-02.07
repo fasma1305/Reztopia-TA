@@ -1,0 +1,56 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Tenant|
+start
+:Memilih opsi "Profil";
+|Reztopia BackOffice|
+:Menampilkan halaman profil;
+|Tenant|
+:Memilih opsi "Edit Profil";
+:Memperbarui informasi profil;
+:Menyimpan perubahan;
+|Reztopia BackOffice|
+:Memvalidasi data;
+if (Data valid?) then (yes)
+  :Memperbarui informasi profil;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman profil;
+endif
+|Tenant|
+:Memilih opsi "Ubah Foto Profil";
+:Memilih foto profil baru;
+:Upload foto profil;
+|Reztopia BackOffice|
+:Memvalidasi foto profil;
+if (Foto valid?) then (yes)
+  :Memperbarui foto profil;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman profil;
+endif
+|Tenant|
+:Memilih opsi "Ubah Kata Sandi";
+:Memasukkan kata sandi lama dan baru;
+:Memverifikasi kata sandi lama;
+|Reztopia BackOffice|
+:Memvalidasi kata sandi lama;
+if (Kata sandi valid?) then (yes)
+  :Memperbarui kata sandi;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman profil;
+endif
+stop
+@enduml

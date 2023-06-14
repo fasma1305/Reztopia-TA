@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Tenant|
+start
+:Memilih opsi "Login";
+|Reztopia BackOffice|
+:Menampilkan halaman login;
+|Tenant|
+:Memasukkan data email dan password;
+|Reztopia BackOffice|
+:Memvalidasi data;
+if (Data valid?) then (yes)
+  :Memberikan akses ke aplikasi;
+  :Menampilkan halaman utama;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman login;
+endif
+stop
+@enduml
+

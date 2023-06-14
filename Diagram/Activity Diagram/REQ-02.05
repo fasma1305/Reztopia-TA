@@ -1,0 +1,57 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Tenant|
+start
+:Memilih opsi "Menu";
+|Reztopia BackOffice|
+:Menampilkan halaman menu;
+|Tenant|
+:Memilih opsi "Tambah Menu";
+:Memasukkan data menu;
+:Menyimpan data menu;
+|Reztopia BackOffice|
+:Memvalidasi data menu;
+if (Data valid?) then (yes)
+  :Menambahkan menu ke daftar menu;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman menu;
+endif
+|Tenant|
+:Memilih opsi "Ubah Menu";
+:Memilih menu yang akan diubah;
+:Memasukkan data perubahan menu;
+:Menyimpan data perubahan;
+|Reztopia BackOffice|
+:Memvalidasi data perubahan;
+if (Data valid?) then (yes)
+  :Mengubah menu yang dipilih;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman menu;
+endif
+|Tenant|
+:Memilih opsi "Hapus Menu";
+:Memilih menu yang akan dihapus;
+:Konfirmasi penghapusan;
+|Reztopia BackOffice|
+:Memvalidasi konfirmasi;
+if (Konfirmasi valid?) then (yes)
+  :Menghapus menu yang dipilih;
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman menu;
+endif
+stop
+@enduml
