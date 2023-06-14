@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Mahasiswa as Mahasiswa
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Mahasiswa->>Boundary: Mengakses profil
+    Boundary->>Controller: Mengirim permintaan profil
+    Controller->>Entity: Memperoleh data profil
+    Entity-->>Controller: Mengembalikan data profil
+    Controller-->>Boundary: Menampilkan data profil
+    Boundary-->>Mahasiswa: Menampilkan data profil

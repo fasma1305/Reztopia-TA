@@ -1,0 +1,55 @@
+@startuml
+
+entity "Users" as users {
+  *user_id : integer <<PK>>
+  --
+  username : varchar
+  password : varchar
+  profile_id : integer <<FK>>
+}
+
+entity "Tenants" as tenants {
+  *tenant_id : integer <<PK>>
+  --
+  tenant_name : varchar
+}
+
+entity "Orders" as orders {
+  *order_id : integer <<PK>>
+  --
+  user_id : integer <<FK>>
+  tenant_id : integer <<FK>>
+  order_date : datetime
+}
+
+entity "OrderDetails" as order_details {
+  *detail_id : integer <<PK>>
+  --
+  order_id : integer <<FK>>
+  product_name : varchar
+  quantity : integer
+  price : float
+}
+
+entity "OrderHistory" as order_history {
+  *history_id : integer <<PK>>
+  --
+  order_id : integer <<FK>>
+  order_status : varchar
+}
+
+entity "Profiles" as profiles {
+  *profile_id : integer <<PK>>
+  --
+  user_id : integer <<FK>>
+  full_name : varchar
+  email : varchar
+}
+
+users ||..|| profiles : has
+users }o..|| orders : places
+tenants ||..o{ orders : receives
+orders ||..|{ order_details : contains
+orders ||..|{ order_history : has
+
+@enduml

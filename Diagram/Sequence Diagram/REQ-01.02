@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Mahasiswa as Mahasiswa
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Mahasiswa->>Boundary: Memasukkan username dan password
+    Boundary->>Controller: Mengirim permintaan login
+    Controller->>Entity: Memeriksa kecocokan data login
+    Entity-->>Controller: Konfirmasi keberhasilan login
+    Controller-->>Boundary: Mengirimkan hasil konfirmasi
+    Boundary-->>Mahasiswa: Menampilkan hasil login

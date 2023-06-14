@@ -1,0 +1,66 @@
+classDiagram
+    class Login {
+        - nama: String
+        - email: String
+        - password: String
+        + Register()
+        + Login()
+    }
+    
+    class Order {
+        - tenant: String
+        - menu: String
+        + Tenant()
+        + Menu()
+    }
+    
+    class Checkout {
+        - orderItems: List<String>
+        + KeranjangPesanan()
+        + Pembayaran()
+        + DetailPesanan()
+    }
+    
+    class History {
+        - transactions: List<String>
+        + RiwayatTransaksi()
+    }
+    
+    class Profile {
+        - name: String
+        - email: String
+        - phone: String
+        + Profil()
+        + Logout()
+    }
+    
+    class OrderManager {
+        - pendingOrders: List<String>
+        + Pesanan()
+    }
+    
+    class OrderHistory {
+        - orderHistory: List<String>
+        + RiwayatPesanan()
+    }
+    
+    class Mahasiswa {
+        Login ()
+        Order ()
+        Checkout ()
+        History ()
+        Profile ()
+    }
+    
+    class Tenant {
+        OrderManager ()
+        OrderHistory ()
+    }
+    
+    Mahasiswa "1" --> "1" Login
+    Mahasiswa "1" --> "1" Order
+    Mahasiswa "1" --> "1" Checkout
+    Mahasiswa "1" --> "1" History
+    Mahasiswa "1" --> "1" Profile
+    Tenant "1" --> "1" OrderManager
+    Tenant "1" --> "1" OrderHistory

@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Mahasiswa as Mahasiswa
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Mahasiswa->>Boundary: Memilih metode pembayaran
+    Boundary->>Controller: Mengirim permintaan pembayaran
+    Controller->>Entity: Memproses pembayaran
+    Entity-->>Controller: Konfirmasi pembayaran berhasil
+    Controller-->>Boundary: Mengirim konfirmasi pembayaran
+    Boundary-->>Mahasiswa: Menampilkan konfirmasi pembayaran

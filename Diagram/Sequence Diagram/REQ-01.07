@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Mahasiswa as Mahasiswa
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Mahasiswa->>Boundary: Memeriksa detail pesanan
+    Boundary->>Controller: Mengirim permintaan detail pesanan
+    Controller->>Entity: Memperoleh detail pesanan
+    Entity-->>Controller: Mengembalikan detail pesanan
+    Controller-->>Boundary: Menampilkan detail pesanan
+    Boundary-->>Mahasiswa: Menampilkan detail pesanan

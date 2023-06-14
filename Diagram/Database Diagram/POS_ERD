@@ -1,0 +1,62 @@
+@startuml
+
+' Entities
+entity "Mahasiswa" as student {
+  + id : integer
+  ---
+  nama : string
+  email : string
+  password : string
+}
+
+entity "Tenant" as tenant {
+  + id : integer
+  ---
+  nama : string
+  lokasi : string
+}
+
+entity "Pesanan" as order {
+  + id : integer
+  ---
+  tanggal : datetime
+  total_harga : double
+  status : string
+}
+
+entity "Menu" as menu {
+  + id : integer
+  ---
+  nama : string
+  harga : double
+  tenant_id : integer
+}
+
+entity "Transaksi" as transaction {
+  + id : integer
+  ---
+  pesanan_id : integer
+  mahasiswa_id : integer
+  metode_pembayaran : string
+  jumlah_bayar : double
+  tanggal : datetime
+}
+
+entity "Riwayat" as history {
+  + id : integer
+  ---
+  transaksi_id : integer
+  detail : string
+  tanggal : datetime
+}
+
+' Relationships
+student --o{ order : membuat
+order ||--o{ menu : memilih
+order --|| transaction : membayar
+tenant --|| menu : menyediakan
+student }o--|| transaction : melakukan
+transaction ||--o{ history : memiliki
+tenant }o--|| history : melihat
+
+@enduml

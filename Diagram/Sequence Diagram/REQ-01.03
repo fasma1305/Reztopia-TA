@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant Mahasiswa as Mahasiswa
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Mahasiswa->>Boundary: Melihat daftar tenant
+    Boundary-->>Mahasiswa: Menampilkan daftar tenant
+    Mahasiswa->>Boundary: Memilih tenant
+    Boundary->>Controller: Mengirim permintaan pilihan tenant
+    Controller->>Entity: Memperoleh detail tenant
+    Entity-->>Controller: Mengembalikan detail tenant
+    Controller-->>Boundary: Menampilkan detail tenant

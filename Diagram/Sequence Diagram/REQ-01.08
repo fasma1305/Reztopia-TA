@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Mahasiswa as Mahasiswa
+    participant Boundary as <<Boundary>>
+    participant Controller as <<Controller>>
+    participant Entity as <<Entity>>
+
+    Mahasiswa->>Boundary: Mengakses riwayat transaksi
+    Boundary->>Controller: Mengirim permintaan riwayat transaksi
+    Controller->>Entity: Memperoleh riwayat transaksi
+    Entity-->>Controller: Mengembalikan riwayat transaksi
+    Controller-->>Boundary: Menampilkan riwayat transaksi
+    Boundary-->>Mahasiswa: Menampilkan riwayat transaksi
