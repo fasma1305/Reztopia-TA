@@ -57,10 +57,10 @@ classDiagram
         OrderHistory ()
     }
     
-    Mahasiswa "1" --> "1" Login
-    Mahasiswa "1" --> "1" Order
-    Mahasiswa "1" --> "1" Checkout
-    Mahasiswa "1" --> "1" History
-    Mahasiswa "1" --> "1" Profile
-    Tenant "1" --> "1" OrderManager
-    Tenant "1" --> "1" OrderHistory
+    Mahasiswa  -->  Login
+    Mahasiswa  -->  Order
+    Mahasiswa  -->  Checkout
+    Mahasiswa  -->  History
+    Mahasiswa  -->  Profile
+    Tenant  -->  OrderManager
+    Tenant  -->  OrderHistory
