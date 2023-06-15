@@ -1,0 +1,68 @@
+@startuml
+
+' Entities
+entity "Tenant" as tenant {
+  + tenant_id : integer (PK)
+  ---
+  username : varchar
+  password : varchar
+  profile_id : integer (FK)
+}
+
+entity "Dashboard" as dashboard {
+  + dashboard_id : integer (PK)
+  ---
+  tenant_id : integer (FK)
+  sales_report : varchar
+  top_products : varchar
+}
+
+entity "Category" as category {
+  + category_id : integer (PK)
+  ---
+  category_name : varchar
+  tenant_id : integer (FK)
+}
+
+entity "Menu" as menu {
+  + menu_id : integer (PK)
+  ---
+  menu_name : varchar
+  category_id : integer (FK)
+}
+
+entity "SalesReport" as sales_report {
+  + report_id : integer (PK)
+  ---
+  tenant_id : integer (FK)
+  order_id : integer (FK)
+  order_date : datetime
+  total_payment : decimal
+}
+
+entity "Profile" as profile {
+  + profile_id : integer (PK)
+  ---
+  tenant_id : integer (FK)
+  full_name : varchar
+  address : varchar
+  profile_picture : varchar
+  password : varchar
+}
+
+entity "Admin" as admin {
+  + admin_id : integer (PK)
+  ---
+  username : varchar
+  password : varchar
+}
+
+' Relationships
+tenant ||..|| dashboard
+tenant ||..|{ category
+category ||--o{ menu
+tenant ||--o{ sales_report
+tenant ||..|{ profile
+admin ||--o{ tenant
+
+@enduml
