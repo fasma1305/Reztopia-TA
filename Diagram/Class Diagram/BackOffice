@@ -1,0 +1,105 @@
+classDiagram
+    class Login {
+        - nama: String
+        - email: String
+        - password: String
+        + MelakukanLogin()
+    }
+    
+    class Logout {
+        - status: String
+        + MelakukanLogout()
+    }
+    
+    class Dashboard {
+        - grafikPenjualan: Grafik
+        - daftarProdukTerlaris: List<Produk>
+        + MelihatDashboard()
+    }
+    
+    class Menu {
+        - kategori: List<Kategori>
+        - menu: List<Menu>
+        + MengelolaKategori()
+        + MengelolaMenu()
+    }
+    
+    class LaporanPenjualanTenant {
+        - rincianPenjualan: List<DetailPenjualan>
+        + MelihatLaporanPenjualan()
+    }
+    
+    class Profil {
+        - nama: String
+        - email: String
+        - fotoProfil: Foto
+        - kataSandi: String
+        + MengelolaProfil()
+    }
+    
+    
+    class AdminDashboard {
+        - grafikPenjualanPujasera: Grafik
+        - jumlahOrderan: Integer
+        - jumlahTenantAktif: Integer
+        - jumlahTenantTidakAktif: Integer
+        - daftarTenantTerlaris: List<Tenant>
+        + MelihatDashboard()
+    }
+    
+    class MengelolaAkunTenant {
+        - dataProfil: DataProfil
+        - dataTenantBaru: DataTenant
+        - statusTenant: String
+        + MengaturDataProfil()
+        + MenambahkanDataTenantBaru()
+        + MengaturStatusTenant()
+    }
+    
+    class LaporanPenjualanSeluruhTenant {
+        - rincianPenjualan: List<DetailPenjualan>
+        + MelihatLaporanPenjualan()
+    }
+    
+    class AdminProfil {
+        - dataProfil: DataProfil
+        + MengelolaProfil()
+    }
+    
+    class Tenant {
+        - nama: String
+        - email: String
+        - password: String
+        + MelakukanLogin()
+        + MelakukanLogout()
+        + MelihatDashboard()
+        + MengelolaKategori()
+        + MengelolaMenu()
+        + MelihatLaporanPenjualan()
+        + MengelolaProfil()
+    }
+    
+    class Admin {
+        - username: String
+        - password: String
+        + MelakukanLogin()
+        + MelakukanLogout()
+        + MelihatDashboard()
+        + MengelolaAkunTenant()
+        + MelihatLaporanPenjualan()
+        + MengelolaProfil()
+    }
+    
+    Tenant --> Login
+    Tenant --> Logout
+    Tenant --> Dashboard
+    Tenant --> Menu
+    Tenant --> LaporanPenjualanTenant
+    Tenant --> Profil
+    
+    Admin --> Login
+    Admin --> Logout
+    Admin --> AdminDashboard
+    Admin --> MengelolaAkunTenant
+    Admin --> LaporanPenjualanSeluruhTenant
+    Admin --> AdminProfil
