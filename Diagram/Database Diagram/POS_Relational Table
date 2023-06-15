@@ -1,55 +1,56 @@
 @startuml
 
-entity "Users" as users {
-  *user_id : integer <<PK>>
-  --
+' Entities
+entity "User" as user {
+  + user_id : integer (PK)
+  ---
   username : varchar
   password : varchar
-  profile_id : integer <<FK>>
+  profile_id : integer (FK)
 }
 
-entity "Tenants" as tenants {
-  *tenant_id : integer <<PK>>
-  --
+entity "Profile" as profile {
+  + profile_id : integer (PK)
+  ---
+  full_name : varchar
+  email : varchar
+}
+
+entity "Tenant" as tenant {
+  + tenant_id : integer (PK)
+  ---
   tenant_name : varchar
 }
 
-entity "Orders" as orders {
-  *order_id : integer <<PK>>
-  --
-  user_id : integer <<FK>>
-  tenant_id : integer <<FK>>
+entity "Order" as order {
+  + order_id : integer (PK)
+  ---
+  user_id : integer (FK)
+  tenant_id : integer (FK)
   order_date : datetime
 }
 
-entity "OrderDetails" as order_details {
-  *detail_id : integer <<PK>>
-  --
-  order_id : integer <<FK>>
+entity "OrderDetail" as order_detail {
+  + detail_id : integer (PK)
+  ---
+  order_id : integer (FK)
   product_name : varchar
   quantity : integer
   price : float
 }
 
 entity "OrderHistory" as order_history {
-  *history_id : integer <<PK>>
-  --
-  order_id : integer <<FK>>
+  + history_id : integer (PK)
+  ---
+  order_id : integer (FK)
   order_status : varchar
 }
 
-entity "Profiles" as profiles {
-  *profile_id : integer <<PK>>
-  --
-  user_id : integer <<FK>>
-  full_name : varchar
-  email : varchar
-}
-
-users ||..|| profiles : has
-users }o..|| orders : places
-tenants ||..o{ orders : receives
-orders ||..|{ order_details : contains
-orders ||..|{ order_history : has
+' Relationships
+user ||..o{ order
+order ||..o{ order_detail
+order ||..|{ order_history
+user ||..|| profile
+tenant ||..o{ order
 
 @enduml
