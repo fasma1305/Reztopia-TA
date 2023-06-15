@@ -1,0 +1,29 @@
+@startuml
+
+node "User Device" {
+  [Web Browser]
+}
+
+node "Reztopia Hosting Server" {
+  package "Reztopia Web App" {
+    [Reztopia POS]
+    [Reztopia BackOffice]
+  }
+
+  database "Database" {
+    [phpMyAdmin]
+  }
+
+  cloud "RESTful" {
+    [Postman]
+  }
+}
+
+[Web Browser] ..> [Reztopia POS]: Accesses
+[Web Browser] ..> [Reztopia BackOffice]: Accesses
+
+[Reztopia POS] -- [Postman]: Connects through
+[Reztopia BackOffice] -- [Postman]: Connects through
+
+[Postman] -- [phpMyAdmin]: Manages
+@enduml
