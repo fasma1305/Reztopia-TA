@@ -14,11 +14,24 @@ start
 |Reztopia BackOffice|
 :Menampilkan halaman laporan penjualan;
 |Admin|
-:Memilih periode laporan;
+:Memilih opsi "Rincian Harian" atau "Rincian Periode";
+if (Opsi = "Rincian Harian") then (yes)
+  :Memasukkan melihat laporan penjualan hari ini;
+else (no)
+  :Memasukkan rentang tanggal penjualan;
 |Reztopia BackOffice|
-:Memproses permintaan laporan;
-:Memuat data penjualan tenant;
+endif
+:Menampilkan laporan penjualan berdasarkan pilihan;
 |Admin|
-:Melihat rincian penjualan tenant;
+:Memilih tenant ;
+|Admin|
+:Memilih opsi "Pilih Kantin" atau "Semua";
+if (Opsi = "Pilih Tenant") then (yes)
+  :Memasukkan melihat laporan penjualan tenant;
+else (no)
+  :Memasukkan melihat laporan penjualan tenant;
+|Reztopia BackOffice|
+endif
+:Menampilkan laporan penjualan berdasarkan pilihan;
 stop
 @enduml
