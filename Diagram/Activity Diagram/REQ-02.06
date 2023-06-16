@@ -19,6 +19,7 @@ if (Opsi = "Rincian Harian") then (yes)
   :Memasukkan melihat laporan penjualan hari ini;
 else (no)
   :Memasukkan rentang tanggal penjualan;
+|Reztopia BackOffice|
 endif
 :Menampilkan laporan penjualan berdasarkan pilihan;
 stop
