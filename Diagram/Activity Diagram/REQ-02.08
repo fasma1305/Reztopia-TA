@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Tenant|
+start
+:Masuk ke Reztopia BackOffice;
+:Memilih sidebar POS;
+|Reztopia BackOffice|
+:Menampilkan daftar pesanan;
+|Tenant|
+:Melihat daftar pesanan;
+:Memperbarui status pesanan;
+|Reztopia BackOffice|
+:Menampilkan pesanan selesai;
+stop
+@enduml

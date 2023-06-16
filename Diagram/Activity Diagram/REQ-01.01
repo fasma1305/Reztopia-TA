@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Mahasiswa|
+start
+:Memilih opsi "Register";
+|Reztopia POS|
+:Menampilkan halaman pendaftaran;
+|Mahasiswa|
+:Memasukkan data diri;
+:Memasukkan data email dan password;
+|Reztopia POS|
+:Memvalidasi data;
+if (Data valid?) then (yes)
+  :Membuat akun mahasiswa;
+  :Menampilkan pesan sukses pendaftaran;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman pendaftaran;
+endif
+stop
+@enduml
