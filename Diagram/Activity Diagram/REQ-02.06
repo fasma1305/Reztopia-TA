@@ -16,7 +16,7 @@ start
 |Tenant|
 :Memilih opsi "Rincian Harian" atau "Rincian Periode";
 if (Opsi = "Rincian Harian") then (yes)
-  :Memasukkan tanggal penjualan;
+  :Memasukkan melihat laporan penjualan hari ini;
 else (no)
   :Memasukkan rentang tanggal penjualan;
 endif

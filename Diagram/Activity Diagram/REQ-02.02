@@ -12,11 +12,6 @@ skinparam activity {
 start
 :Memilih opsi "Logout";
 |Reztopia BackOffice|
-:Menampilkan konfirmasi logout;
-|Tenant|
-:Memilih opsi "Yes";
-:Melakukan logout;
-|Reztopia BackOffice|
 :Menampilkan halaman login;
 stop
 @enduml
