@@ -1,0 +1,39 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Tenant
+actor Admin
+
+rectangle "Reztopia BackOffice" {
+
+  usecase LoginTenant as "Login Tenant"
+  usecase LogoutTenant as "Logout Tenant"
+  usecase "Melihat Dashboard Tenant" as DashboardTenant
+  usecase "Mengelola Kategori" as ManageCategory
+  usecase "Mengelola Menu" as ManageMenu
+  usecase "Melihat Laporan Penjualan Tenant" as ViewTenantSalesReport
+  usecase "Mengelola Profil Tenant" as ManageTenantProfile
+  
+  usecase LoginAdmin as "Login Admin"
+  usecase LogoutAdmin as "Logout Admin"
+  usecase "Melihat Dashboard Admin" as DashboardAdmin
+  usecase "Mengelola Akun Tenant" as ManageTenantAccounts
+  usecase "Melihat Laporan Penjualan Seluruh Tenant" as ViewAllTenantSalesReport
+  usecase "Mengelola Profil Admin" as ManageAdminProfile
+  
+  Tenant --> LoginTenant
+  Tenant --> LogoutTenant
+  Tenant --> DashboardTenant
+  Tenant --> ManageCategory
+  Tenant --> ManageMenu
+  Tenant --> ViewTenantSalesReport
+  Tenant --> ManageTenantProfile
+  
+  Admin --> LoginAdmin
+  Admin --> LogoutAdmin
+  Admin --> DashboardAdmin
+  Admin --> ManageTenantAccounts
+  Admin --> ViewAllTenantSalesReport
+  Admin --> ManageAdminProfile
+}
+@enduml
