@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Mahasiswa|
+start
+:Masuk ke halaman profil;
+|Reztopia POS|
+:Menampilkan halaman profil;
+|Mahasiswa|
+:Melakukan perubahan profil;
+:Menyimpan perubahan;
+|Reztopia POS|
+:Menampilkan halaman profil terbaru;
+stop
+@enduml

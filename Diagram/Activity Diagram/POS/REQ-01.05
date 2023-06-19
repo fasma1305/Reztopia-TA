@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Mahasiswa|
+start
+:Memilih opsi "Lihat Keranjang";
+|Reztopia POS|
+:Menampilkan halaman keranjang pesanan;
+stop
+@enduml
