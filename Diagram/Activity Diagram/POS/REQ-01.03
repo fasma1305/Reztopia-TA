@@ -10,13 +10,8 @@ skinparam activity {
 
 |Mahasiswa|
 start
-:Memilih opsi "Cari Tenant";
+:Memilih tenant;
 |Reztopia POS|
-:Menampilkan halaman pencarian tenant;
-|Mahasiswa|
-:Memasukkan kriteria pencarian;
-:Memilih tenant yang diinginkan;
-|Reztopia POS|
-:Menampilkan halaman tenant terpilih;
+:Menampilkan halaman makanan atau minuman pada tenant terpilih;
 stop
 @enduml

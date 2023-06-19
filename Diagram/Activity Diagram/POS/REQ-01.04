@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Mahasiswa|
+start
+:Memilih menu dari tenant terpilih;
+|Reztopia POS|
+:Menampilkan daftar menu;
+|Mahasiswa|
+:Memilih menu yang diinginkan;
+|Reztopia POS|
+:Menampilkan detail menu terpilih;
+stop
+@enduml
