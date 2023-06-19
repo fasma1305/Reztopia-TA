@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Mahasiswa|
+start
+:Memilih opsi "Login";
+|Reztopia POS|
+:Menampilkan halaman login;
+|Mahasiswa|
+:Memasukkan data email dan password;
+|Reztopia POS|
+:Memvalidasi data;
+if (Data valid?) then (yes)
+  :Memberikan akses ke aplikasi;
+  :Menampilkan halaman utama;
+else (no)
+  :Menampilkan pesan error;
+  :Kembali ke halaman login;
+endif
+stop
+@enduml
