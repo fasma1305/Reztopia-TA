@@ -1,5 +1,5 @@
 classDiagram
-    class Login {
+    class Authentication {
         - nama: String
         - email: String
         - password: String
@@ -57,7 +57,7 @@ classDiagram
         OrderHistory ()
     }
     
-    Mahasiswa  -->  Login
+    Mahasiswa  -->  Authentication
     Mahasiswa  -->  Order
     Mahasiswa  -->  Checkout
     Mahasiswa  -->  History
