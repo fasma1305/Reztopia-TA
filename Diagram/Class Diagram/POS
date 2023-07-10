@@ -1,61 +1,62 @@
 classDiagram
     class Authentication {
-      - nama: String
-      - email: String
-      - password: String
-      + Register()
-      + Login()
+        - nama: String
+        - email: String
+        - password: String
+        + Register()
+        + Login()
     }
-
+    
     class Order {
-      - tenant: String
-      - menu: String
-      + Tenant()
-      + Menu()
+        - tenant: String
+        - menu: String
+        + Tenant()
+        + Menu()
     }
-
+    
     class Checkout {
-      - orderItems: List<String>
-      + KeranjangPesanan()
-      + Pembayaran()
-      + DetailPesanan()
+        - orderItems: List<String>
+        + KeranjangPesanan()
+        + Pembayaran()
+        + DetailPesanan()
     }
-
-    class History {
-      - transactions: List<String>
-      + RiwayatTransaksi()
+    
+    class Transition {
+        - transactions: List<String>
+        + MengelolaTagihan()
+        + PesananSelesai()
     }
-
+    
     class Profile {
-      - name: String
-      - email: String
-      - phone: String
-      + Profil()
-      + Logout()
+        - name: String
+        - email: String
+        - phone: String
+        + Profil()
+        + Logout()
     }
-
+    
     class OrderManager {
-      - pendingOrders: List<String>
-      - orderHistory: List<String>
-      + Pesanan()
-      + RiwayatPesanan()
+        - pendingOrders: List<String>
+        - orderHistory: List<String>
+        + Pesanan()
+        + RiwayatPesanan()
     }
-
+    
     class Mahasiswa {
-      + Login()
-      + Order()
-      + Checkout()
-      + History()
-      + Profile()
+        Login ()
+        Order ()
+        Checkout ()
+        Transition ()
+        Profile ()
     }
-
+    
     class Tenant {
-      + OrderManager()
+        OrderManager ()
     }
-
-    Mahasiswa --> Authentication
-    Mahasiswa --> Order
-    Mahasiswa --> Checkout
-    Mahasiswa --> History
-    Mahasiswa --> Profile
-    Tenant --> OrderManager
+    
+    Mahasiswa  -->  Authentication
+    Mahasiswa  -->  Order
+    Mahasiswa  -->  Checkout
+    Mahasiswa  -->  Transition
+    Mahasiswa  -->  Profile
+    Tenant  -->  OrderManager
