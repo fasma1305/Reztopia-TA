@@ -1,69 +1,61 @@
-@startuml
+classDiagram
+    class Authentication {
+      - nama: String
+      - email: String
+      - password: String
+      + Register()
+      + Login()
+    }
 
-class Authentication {
-  - nama: String
-  - email: String
-  - password: String
-  + Register(): void
-  + Login(): void
-}
+    class Order {
+      - tenant: String
+      - menu: String
+      + Tenant()
+      + Menu()
+    }
 
-class Order {
-  - tenant: String
-  - menu: String
-  + Tenant(): void
-  + Menu(): void
-}
+    class Checkout {
+      - orderItems: List<String>
+      + KeranjangPesanan()
+      + Pembayaran()
+      + DetailPesanan()
+    }
 
-class Checkout {
-  - orderItems: List<String>
-  + KeranjangPesanan(): void
-  + Pembayaran(): void
-  + DetailPesanan(): void
-}
+    class History {
+      - transactions: List<String>
+      + RiwayatTransaksi()
+    }
 
-class History {
-  - transactions: List<String>
-  + RiwayatTransaksi(): void
-}
+    class Profile {
+      - name: String
+      - email: String
+      - phone: String
+      + Profil()
+      + Logout()
+    }
 
-class Profile {
-  - name: String
-  - email: String
-  - phone: String
-  + Profil(): void
-  + Logout(): void
-}
+    class OrderManager {
+      - pendingOrders: List<String>
+      - orderHistory: List<String>
+      + Pesanan()
+      + RiwayatPesanan()
+    }
 
-class OrderManager {
-  - pendingOrders: List<String>
-  + Pesanan(): void
-}
+    class Mahasiswa {
+      + Login()
+      + Order()
+      + Checkout()
+      + History()
+      + Profile()
+    }
 
-class OrderHistory {
-  - orderHistory: List<String>
-  + RiwayatPesanan(): void
-}
+    class Tenant {
+      + OrderManager()
+    }
 
-class Mahasiswa {
-  + Login(): void
-  + Order(): void
-  + Checkout(): void
-  + History(): void
-  + Profile(): void
-}
-
-class Tenant {
-  + OrderManager(): void
-  + OrderHistory(): void
-}
-
-Mahasiswa --> Authentication
-Mahasiswa --> Order
-Mahasiswa --> Checkout
-Mahasiswa --> History
-Mahasiswa --> Profile
-Tenant --> OrderManager
-Tenant --> OrderHistory
-
-@enduml
+    Mahasiswa --> Authentication
+    Mahasiswa --> Order
+    Mahasiswa --> Checkout
+    Mahasiswa --> History
+    Mahasiswa --> Profile
+    Tenant --> OrderManager

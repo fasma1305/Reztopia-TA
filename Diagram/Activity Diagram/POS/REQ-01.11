@@ -10,12 +10,9 @@ skinparam activity {
 
 |Mahasiswa|
 start
-:Memilih opsi "Riwayat Transaksi";
+:Memilih opsi "Logout";
 |Reztopia POS|
-:Menampilkan halaman riwayat transaksi;
-|Mahasiswa|
-:Memilih transaksi yang ingin dilihat detailnya;
-|Reztopia POS|
-:Menampilkan detail transaksi terpilih;
+:Melakukan proses logout;
+:Kembali ke halaman login;
 stop
 @enduml

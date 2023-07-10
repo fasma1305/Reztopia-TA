@@ -16,7 +16,7 @@ start
 |Mahasiswa|
 :Memasukkan data email dan password;
 |Reztopia POS|
-:Memvalidasi data;
+:Memvalidasi dan Memverifikasi data;
 if (Data valid?) then (yes)
   :Memberikan akses ke aplikasi;
   :Menampilkan halaman utama;

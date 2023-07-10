@@ -4,9 +4,21 @@ sequenceDiagram
     participant Controller as <<Controller>>
     participant Entity as <<Entity>>
 
-    Mahasiswa->>Boundary: Mengakses riwayat transaksi
-    Boundary->>Controller: Mengirim permintaan riwayat transaksi
-    Controller->>Entity: Memperoleh riwayat transaksi
-    Entity-->>Controller: Mengembalikan riwayat transaksi
-    Controller-->>Boundary: Menampilkan riwayat transaksi
-    Boundary-->>Mahasiswa: Menampilkan riwayat transaksi
+    Mahasiswa->>Boundary: Mengakses daftar tagihan
+    Boundary->>Controller: Permintaan daftar tagihan
+    Controller->>Entity: Memperoleh daftar tagihan
+    Entity-->>Controller: Mengembalikan daftar tagihan
+    Controller-->>Boundary: Menampilkan daftar tagihan
+    Boundary->>Mahasiswa: Menampilkan daftar tagihan
+    Mahasiswa->>Boundary: Memilih tagihan untuk diselesaikan
+    Boundary->>Controller: Permintaan penyelesaian tagihan
+    Controller->>Entity: Menyelesaikan tagihan
+    Entity-->>Controller: Konfirmasi penyelesaian tagihan
+    Controller-->>Boundary: Mengirimkan konfirmasi penyelesaian
+    Boundary-->>Mahasiswa: Menampilkan konfirmasi penyelesaian
+    Mahasiswa->>Boundary: Memilih tagihan untuk dibatalkan
+    Boundary->>Controller: Permintaan pembatalan tagihan
+    Controller->>Entity: Membatalkan tagihan
+    Entity-->>Controller: Konfirmasi pembatalan tagihan
+    Controller-->>Boundary: Mengirimkan konfirmasi pembatalan
+    Boundary-->>Mahasiswa: Menampilkan konfirmasi pembatalan

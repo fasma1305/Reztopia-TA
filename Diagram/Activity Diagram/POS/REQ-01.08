@@ -10,12 +10,18 @@ skinparam activity {
 
 |Mahasiswa|
 start
-:Memilih opsi "Riwayat Transaksi";
-|Reztopia POS|
-:Menampilkan halaman riwayat transaksi;
+:Masuk ke Reztopia POS;
+:Memilih halaman tagihan;
+|Reztopia BackOffice|
+:Menampilkan daftar tagihan;
 |Mahasiswa|
-:Memilih transaksi yang ingin dilihat detailnya;
-|Reztopia POS|
-:Menampilkan detail transaksi terpilih;
+:Memilih tagihan yang ingin dikelola;
+:Menyelesaikan atau membatalkan tagihan;
+|Reztopia BackOffice|
+if (Tagihan diselesaikan?) then (yes)
+  :Menampilkan pesan sukses;
+else (no)
+  :Menampilkan pesan batal;
+endif
 stop
 @enduml

@@ -17,7 +17,7 @@ start
 :Memasukkan data diri;
 :Memasukkan data email dan password;
 |Reztopia POS|
-:Memvalidasi data;
+:Memverifikasi data;
 if (Data valid?) then (yes)
   :Membuat akun mahasiswa;
   :Menampilkan pesan sukses pendaftaran;

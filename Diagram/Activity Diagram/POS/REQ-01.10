@@ -10,9 +10,13 @@ skinparam activity {
 
 |Mahasiswa|
 start
-:Memilih opsi "Logout";
+:Masuk ke halaman profil;
 |Reztopia POS|
-:Melakukan proses logout;
-:Kembali ke halaman login;
+:Menampilkan halaman profil;
+|Mahasiswa|
+:Melakukan perubahan profil;
+:Menyimpan perubahan;
+|Reztopia POS|
+:Menampilkan halaman profil terbaru;
 stop
 @enduml

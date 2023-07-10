@@ -10,20 +10,6 @@ skinparam activity {
 
 |Mahasiswa|
 start
-:Memilih opsi "Lihat Keranjang";
-|Reztopia POS|
-:Menampilkan halaman keranjang@startuml
-skinparam shadowing false
-skinparam roundcorner 20
-skinparam activity {
-  BorderColor DarkSlateGray
-  BackgroundColor LightBlue
-  FontColor DarkSlateGray
-  ArrowColor DarkSlateGray
-}
-
-|Mahasiswa|
-start
 :Memilih opsi "Pembayaran";
 |Reztopia POS|
 :Menampilkan halaman pembayaran;
@@ -36,10 +22,8 @@ if (Pembayaran sukses?) then (yes)
   :Menampilkan pesan sukses pembayaran;
 else (no)
   :Menampilkan pesan error pembayaran;
-  :Kembali ke halaman pembayaran;
+  |Reztopia POS|
+  :Menampilkan halaman pembayaran;
 endif
-stop
-@enduml
- pesanan;
 stop
 @enduml

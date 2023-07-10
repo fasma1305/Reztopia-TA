@@ -6,7 +6,7 @@ sequenceDiagram
 
     Mahasiswa->>Boundary: Memasukkan username dan password
     Boundary->>Controller: Mengirim permintaan login
-    Controller->>Entity: Memeriksa kecocokan data login
+    Controller->>Entity: Memvalidasi dan Memverifikasi data login
     Entity-->>Controller: Konfirmasi keberhasilan login
     Controller-->>Boundary: Mengirimkan hasil konfirmasi
     Boundary-->>Mahasiswa: Menampilkan hasil login
