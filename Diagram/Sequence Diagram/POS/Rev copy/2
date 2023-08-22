@@ -1,0 +1,27 @@
+@startuml
+
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n LoginPage" as FormLogin #ADD8E6
+participant "<<Controller>> \n AuthController" as Sistem #ADD8E6
+participant "<<Model>> \n Users" as Database #ADD8E6
+
+Mahasiswa -> FormLogin : Email, Password
+FormLogin -> Sistem : Email, Password
+Sistem -> Database : Users data
+Database --> Sistem : Email, Password salah
+Sistem --> FormLogin : Email, Password Salah
+FormLogin --> Mahasiswa : Pesan Email, Password Salah
+Database --> Sistem : Email, Password benar
+Sistem --> FormLogin : Redirect Halaman Utama
+FormLogin --> Mahasiswa : Halaman Utama tampil
+
+@enduml

@@ -16,23 +16,21 @@ skinparam actor {
 
 |Mahasiswa|
 start
-  :Membuka aplikasi Reztopia POS;
-  :Navigasi ke halaman keranjang;
-  if (Keranjang kosong?) then (Ya)
-    :Menambahkan item ke keranjang;
-  else (Tidak)
-  endif
-  :Memeriksa dan memperbarui detail item;
-  :Mengisi nomor meja;
-  if (Memilih tipe pesanan)
-    :Makan ditempat;
-     else
-    :Dibungkus;
-  endif
-  :Melanjutkan ke halaman konfirmasi pesanan;
+:Input url Reztopia POS;
+:Login Reztopia POS;
 |Reztopia POS|
-  :Memproses pesanan;
+:Menampilkan halaman utama;
+|Mahasiswa|
+:Klik navbar keranjang;
+|Reztopia POS|
+:Menampilkan halaman keranjang;
+|Mahasiswa|
+: Edit jumlah item dan catatan;
+: Input tipe pesanan dan input nomer meja;
+: Klik button "Pesan;
+|Reztopia POS|
   :Menampilkan halaman tagihan;
+  :  :Kembali ke halaman login;
 |Mahasiswa|
 stop
 @enduml

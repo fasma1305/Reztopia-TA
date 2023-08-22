@@ -1,0 +1,70 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Proses Mengelola Pesanan di Aplikasi Reztopia BackOffice
+actor "Tenant" as Tenant
+participant "<<View>> \n OrderMgrPage" as OrderManagerPage #ADD8E6
+participant "<<Controller>> \n OrderMgrController" as Sistem #ADD8E6
+participant "<<Model>> \n Users" as Users #ADD8E6
+participant "<<Model>> \n Outlets" as Outlets #ADD8E6
+participant "<<Model>> \n Catagories" as Catagories #ADD8E6
+participant "<<Model>> \n Orders" as Database #ADD8E6
+participant "<<Model>> \n Order_Details" as OrderDetails #ADD8E6
+
+Tenant -> OrderManagerPage : Masu Reztopia Pos: Tenant
+OrderManagerPage -> Sistem : Get daftar pesanan
+Sistem -> Users : Request Users data
+Users -> Outlets : Request Outlets data
+Outlets -> Catagories : Request Catagories data
+Catagories -> Database : Request orders data
+Database --> OrderDetails : Response OrderDetails data
+OrderDetails --> Database : Response OrderDetails data
+Database --> Catagories : Response Orders data
+Catagories --> Outlets : Response Catagories data
+Outlets --> Users : Response Outlets data
+Users --> Sistem : Response Users data
+Sistem --> OrderManagerPage : View daftar pesanan
+OrderManagerPage --> Tenant : Menampilkan Daftar pesanan
+
+Tenant -> OrderManagerPage : Klik button "konfirmasi"
+OrderManagerPage -> Sistem : Post update status pesanan
+Sistem -> Database : Update orders data
+Database --> Sistem : Response orders data
+Sistem --> OrderManagerPage : View daftar pesanan terbaru
+OrderManagerPage --> Tenant : Menampilkan Daftar pesanan terbaru
+
+Tenant -> OrderManagerPage : Klik sidebar "history"
+OrderManagerPage -> Sistem : Get riwayat pesanan
+Sistem -> Users : Request Users data
+Users -> Outlets : Request Outlets data
+Outlets -> Catagories : Request Catagories data
+Catagories -> Database : Request orders data
+Database --> OrderDetails : Response OrderDetails data
+OrderDetails --> Database : Response OrderDetails data
+Database --> Catagories : Response Orders data
+Catagories --> Outlets : Response Catagories data
+Outlets --> Users : Response Outlets data
+Users --> Sistem : Response Users data
+Sistem --> OrderManagerPage : View riwayat pesanan
+OrderManagerPage --> Tenant : Menampilkan riwayat pesanan
+
+Tenant -> OrderManagerPage : : Klik button "detail"
+OrderManagerPage -> Sistem : Get detail riwayat pesanan
+Sistem -> Database : Request orders data
+Database -> OrderDetails : Request order_details data
+OrderDetails --> Database : Response order_details data
+Database --> Sistem : Response orders data
+Sistem --> OrderManagerPage : View detail riwayat pesanan
+OrderManagerPage --> Tenant : Menampilkan detail riwayat pesanan
+
+
+@enduml

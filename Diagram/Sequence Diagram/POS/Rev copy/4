@@ -1,0 +1,48 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Mengelola Tagihan Transaksi di Halaman Tagihan
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n TransactionPage" as HalamanTagihan #ADD8E6
+participant "<<Controller>> \n TransactionController" as Sistem #ADD8E6
+participant "<<Model>> \n Users" as Users #ADD8E6
+participant "<<Model>> \n Outlets" as Outlets #ADD8E6
+participant "<<Model>> \n Catagories" as Catagories #ADD8E6
+participant "<<Model>> \n Orders" as Database #ADD8E6
+participant "<<Model>> \n Order_Details" as OrderDetails #ADD8E6
+
+Mahasiswa -> HalamanTagihan : Klik navbar transaksi
+HalamanTagihan -> Sistem : GET daftar transaksi
+Sistem -> Users : Request Users data
+Users -> Outlets : Request Outlets data
+Outlets -> Catagories : Request Catagories data
+Catagories -> Database : Request orders data
+Database --> OrderDetails : Response OrderDetails data
+OrderDetails --> Database : Response OrderDetails data
+Database --> Catagories : Response Orders data
+Catagories --> Outlets : Response Catagories data
+Outlets --> Users : Response Outlets data
+Users --> Sistem : Response Users data
+Sistem --> HalamanTagihan : View daftar transaksi
+HalamanTagihan --> Mahasiswa : Tampilkan daftar transaksi
+
+Mahasiswa -> HalamanTagihan : Klik salah satu detail transaksi
+HalamanTagihan -> Sistem : GET detail transaksi
+Sistem -> Database : Request orders data
+Database -> OrderDetails : Request order_details data
+OrderDetails --> Database : Response order_details data
+Database --> Sistem : Response orders data
+Sistem --> HalamanTagihan : View detail transaksi
+HalamanTagihan --> Mahasiswa : Tampilkan detail transaksi
+
+
+@enduml

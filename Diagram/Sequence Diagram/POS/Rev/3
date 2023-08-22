@@ -1,0 +1,45 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Memilih Tenant dan Menu di Order Page
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n HomePage" as View #ADD8E6
+participant "<<Controller>> \n OrderController" as Controller #ADD8E6
+participant "<<Model>> \n Outlets" as Outlets #ADD8E6
+participant "<<Model>> \n Products" as Products #ADD8E6
+
+Mahasiswa -> View : Masuk Reztopia POS
+View -> Controller : Get daftar tenant
+Controller -> Outlets : Request outlets data
+Outlets --> Controller : Response outlets data
+Controller --> View : View daftar tenant
+View --> Mahasiswa : Tampilkan daftar tenant
+
+Mahasiswa -> View : Klik salah satu tenant
+View -> Controller : Get Tenant dipilih
+Controller -> Outlets : Request outlets data
+Outlets -> Products : Request Products data
+Products --> Outlets : Response Products data
+Outlets --> Controller : Response outlets data
+Controller --> View : View menu tenant
+View --> Mahasiswa : Tampilkan daftar menu tenant
+
+Mahasiswa -> View : Klik salah satu menu
+View -> Controller : Get menu tenant
+Controller -> Outlets : Request orders data
+Outlets -> Products : Request Products data
+Products --> Outlets : Response Products data
+Outlets --> Controller : Response orders data
+Controller --> View : menu berhasil ditambahkan
+View --> Mahasiswa : Tampilkan pesan menu berhasil ditambahkan
+
+@enduml

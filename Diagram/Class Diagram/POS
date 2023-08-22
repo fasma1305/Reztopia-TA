@@ -1,62 +1,106 @@
-classDiagram
-    class Authentication {
-        - nama: String
-        - email: String
-        - password: String
-        + Register()
-        + Login()
-    }
-    
-    class Order {
-        - tenant: String
-        - menu: String
-        + Tenant()
-        + Menu()
-    }
-    
-    class Checkout {
-        - orderItems: List<String>
-        + KeranjangPesanan()
-        + Pembayaran()
-        + DetailPesanan()
-    }
-    
-    class Transition {
-        - transactions: List<String>
-        + MengelolaTagihan()
-        + PesananSelesai()
-    }
-    
-    class Profile {
-        - name: String
-        - email: String
-        - phone: String
-        + Profil()
-        + Logout()
-    }
-    
-    class OrderManager {
-        - pendingOrders: List<String>
-        - orderHistory: List<String>
-        + Pesanan()
-        + RiwayatPesanan()
-    }
-    
-    class Mahasiswa {
-        Login ()
-        Order ()
-        Checkout ()
-        Transition ()
-        Profile ()
-    }
-    
-    class Tenant {
-        OrderManager ()
-    }
-    
-    Mahasiswa  -->  Authentication
-    Mahasiswa  -->  Order
-    Mahasiswa  -->  Checkout
-    Mahasiswa  -->  Transition
-    Mahasiswa  -->  Profile
-    Tenant  -->  OrderManager
+@startuml
+
+class Users #C8F08C {
+    - idUsers: Integer
+    - username: String
+    - email: String
+    - name: String
+    - phone: Integer
+    - password: String
+    + Register()
+    + Login()
+    + Logout()
+    + Profil()
+}
+
+class Outlets #C8F08C {
+    - idOutlets: Integer
+    - idUsers: Integer
+    - imageOutlets: String
+    - statusOutlets: String
+    - imageProducts: String
+    + DaftarTenant()
+    + DaftarMenu()
+}
+
+class Categories #C8F08C {
+    - idCategories: Integer
+    - idOutlets: Integer
+    - nameCategories: String
+    + DaftarTenant()
+    + DaftarMenu()
+}
+
+class Products #C8F08C {
+    - idProducts: Integer
+    - idCategories: Integer
+    - nameProducts: String
+    - priceProducts: Integer
+    - descriptionProducts: String
+    - imageProducts: String
+    + DaftarTenant()
+    + DaftarMenu()
+}
+
+class Orders #64D2FA {
+    - idOrders: Integer
+    - idUsers: Integer
+    - idOutlets: Integer
+    - idCategories: Integer
+    - idOrderDetails
+    - dateOrders: Date
+    - tableNumber: String
+    - orderType: String
+    - PaymentMethod: String
+    - PaymentStatus: String
+    - timeOrder: Integer
+    + Keranjang()
+    + Tagihan()
+    + TransaksiSelesai()
+    + Pembayaran()
+    + DaftarPesanan()
+    + RiwayatPesanan()
+}
+
+class Order_Details #64D2FA {
+    - idOrderDetails: Integer
+    - idOrders: Integer
+    - idProducts: Integer
+    - quantity: Integer
+    - price: Integer
+    - note: String
+    + Keranjang()
+    + Tagihan()
+    + TransaksiSelesai()
+    + DaftarPesanan()
+    + RiwayatPesanan()
+}
+
+class Mahasiswa #64D2FA {
+    + Register()
+    + Login()
+    + Logout()
+    + Profil()
+    + DaftarTenant()
+    + DaftarMenu()
+    + Keranjang()
+    + Tagihan()
+    + Pembayaran()
+    + TransaksiSelesai()
+}
+
+class Tenant #64D2FA {
+    + DaftarPesanan()
+    + RiwayatPesanan()
+}
+
+Mahasiswa --> Users
+Mahasiswa --> Outlets
+Mahasiswa --> Categories
+Mahasiswa --> Products
+Mahasiswa --> Orders 
+Tenant --> Orders 
+Mahasiswa --> Order_Details
+Tenant --> Order_Details
+
+@enduml

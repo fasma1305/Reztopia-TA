@@ -1,0 +1,33 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Proses Pembayaran di Aplikasi Reztopia POS
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n PaymentPage" as MidtransPage #ADD8E6
+participant "<<Controller>> \n PaymentController" as Sistem #ADD8E6
+participant "<<Model>> \n Orders" as Database #ADD8E6
+
+Mahasiswa -> MidtransPage : Klik button "Pembayaran"
+MidtransPage -> Sistem : Get Metode Pembayaran
+Sistem -> Database : Request orders data
+Database --> Sistem : Response orders data
+Sistem --> MidtransPage : View Metode Pembayaran
+MidtransPage --> Mahasiswa : Tampilkan Metode Pembayaran
+
+Mahasiswa -> MidtransPage : Klik salah satu metode pembayaran;
+MidtransPage -> Sistem : Post data pembayaran
+Sistem -> Database : Update orders data
+Database --> Sistem : Response orders data
+Sistem --> MidtransPage : Pembayaran Berhasil
+MidtransPage --> Mahasiswa : Tampilkan Pesan "Pembayaran Berhasil"
+
+@enduml

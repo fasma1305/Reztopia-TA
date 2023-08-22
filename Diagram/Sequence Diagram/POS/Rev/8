@@ -1,0 +1,52 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Proses Mengelola Pesanan di Aplikasi Reztopia BackOffice
+actor "Tenant" as Tenant #ADD8E6
+participant "<<View>> \n OrderMgrPage" as View #ADD8E6
+participant "<<Controller>> \n OrderMgrController" as Controller #ADD8E6
+participant "<<Model>> \n Orders" as Orders #ADD8E6
+participant "<<Model>> \n Order_Details" as OrderDetails #ADD8E6
+
+Tenant -> View : Masu Reztopia Pos: Tenant
+View -> Controller : Get daftar pesanan
+Controller -> Orders : Request orders data
+Orders -> OrderDetails : Request order_details data
+OrderDetails --> Orders : Response order_details data
+Orders --> Controller : Response orders data
+Controller --> View : View daftar pesanan
+View --> Tenant : Menampilkan Daftar pesanan
+
+Tenant -> View : Klik button "konfirmasi"
+View -> Controller : Post update status pesanan
+Controller -> Orders : Update orders data
+Orders --> Controller : Response orders data
+Controller --> View : View daftar pesanan terbaru
+View --> Tenant : Menampilkan Daftar pesanan terbaru
+
+Tenant -> View : Klik sidebar "history"
+View -> Controller : Get riwayat pesanan
+Controller -> Orders : Request orders data
+Orders --> Controller : Response orders data
+Controller --> View : View riwayat pesanan
+View --> Tenant : Menampilkan riwayat pesanan
+
+Tenant -> View : : Klik button "detail"
+View -> Controller : Get detail riwayat pesanan
+Controller -> Orders : Request orders data
+Orders -> OrderDetails : Request order_details data
+OrderDetails --> Orders : Response order_details data
+Orders --> Controller : Response orders data
+Controller --> View : View detail riwayat pesanan
+View --> Tenant : Menampilkan detail riwayat pesanan
+
+@enduml

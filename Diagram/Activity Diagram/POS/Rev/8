@@ -7,15 +7,25 @@ skinparam activity {
   FontColor DarkSlateGray
   ArrowColor DarkSlateGray
 }
-
 |Tenant|
 start
-:Masuk ke Reztopia POS;
+:Input url Reztopia POS: Tenant;
+:Login Reztopia POS: Tenant;
+|Reztopia POS|
+:Menampilkan halaman daftar pesanan;
+|Tenant|
+:Klik button "konfirmasi";
+|Reztopia POS|
+:Memperbarui halaman
+     daftar pesanan;
+|Tenant|
+: Klik sidebar "history";
 |Reztopia POS|
 :Menampilkan daftar riwayat pesanan;
 |Tenant|
-:Memilih pesanan yang ingin dilihat detailnya;
+: Klik button "detail";
 |Reztopia POS|
 :Menampilkan detail riwayat pesanan;
+
 stop
 @enduml

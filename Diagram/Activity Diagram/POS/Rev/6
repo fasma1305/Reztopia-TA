@@ -1,0 +1,36 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Mahasiswa|
+start
+:Input url Reztopia POS;
+:Login Reztopia POS;
+|Reztopia POS|
+:Menampilkan halaman utama;
+|Mahasiswa|
+:Klik navbar transaksi;
+:Klik button "Pembayaran";
+|Reztopia POS|
+:Menampilkan halaman pembayaran;
+|Mahasiswa|
+:klik salah satu metode pembayaran;
+:input data pembayaran;
+|Reztopia POS|
+:Memproses pembayaran;
+if (Pembayaran sukses?) then (yes)
+  :Menampilkan pesan sukses pembayaran;
+  :Kembali ke halaman transaksi;
+else (no)
+  :Menampilkan pesan error pembayaran;
+  :Kembali ke halaman pembayaran;
+  |Reztopia POS|
+endif
+stop
+@enduml

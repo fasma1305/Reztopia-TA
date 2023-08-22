@@ -1,0 +1,36 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Mengelola Tagihan Transaksi di Halaman Tagihan
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n TransactionPage" as View #ADD8E6
+participant "<<Controller>> \n TransactionController" as Controller #ADD8E6
+participant "<<Model>> \n Orders" as Orders #ADD8E6
+participant "<<Model>> \n Order_Details" as OrderDetails #ADD8E6
+
+Mahasiswa -> View : Klik navbar transaksi
+View -> Controller : GET daftar transaksi
+Controller -> Orders : Request orders data
+Orders --> Controller : Response orders data
+Controller --> View : View daftar transaksi
+View --> Mahasiswa : Tampilkan daftar transaksi
+
+Mahasiswa -> View : Klik salah satu detail transaksi
+View -> Controller : GET detail transaksi
+Controller -> Orders : Request orders data
+Orders -> OrderDetails : Request order_details data
+OrderDetails --> Orders : Response order_details data
+Orders --> Controller : Response orders data
+Controller --> View : View detail transaksi
+View --> Mahasiswa : Tampilkan detail transaksi
+
+@enduml

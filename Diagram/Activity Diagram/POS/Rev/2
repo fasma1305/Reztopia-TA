@@ -10,20 +10,19 @@ skinparam activity {
 
 |Mahasiswa|
 start
-:Memilih opsi "Register";
+:Input url Reztopia POS;
 |Reztopia POS|
-:Menampilkan halaman pendaftaran;
+:Menampilkan halaman login;
 |Mahasiswa|
-:Memasukkan data diri;
-:Memasukkan data email dan password;
+:input email dan password;
 |Reztopia POS|
-:Memvalidasi data;
+:Memvalidasi dan memverifikasi data;
 if (Data valid?) then (yes)
-  :Membuat akun mahasiswa;
-  :Menampilkan pesan sukses pendaftaran;
+  :Memberikan akses ke aplikasi;
+  :Menampilkan halaman utama;
 else (no)
   :Menampilkan pesan error;
-  :Kembali ke halaman pendaftaran;
+  :Kembali ke halaman login;
 endif
 stop
 @enduml

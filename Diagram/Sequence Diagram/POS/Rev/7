@@ -1,0 +1,33 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Proses Mengelola Profil di Aplikasi Reztopia POS
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n ProfilePage" as View #ADD8E6
+participant "<<Controller>> \n ProfileController" as Controller #ADD8E6
+participant "<<Model>> \n Users" as Users #ADD8E6
+
+Mahasiswa -> View : Klik navbar profil
+View -> Controller : Get data profil 
+Controller -> Users : Request Users data
+Users --> Controller : Response Users data
+Controller --> View : View data profil 
+View --> Mahasiswa : Menampilkan informasi profil 
+
+Mahasiswa -> View : Klik button "edit profil"
+View -> Controller : Post data profil baru
+Controller -> Users : Update Users data
+Users --> Controller : Response Users data
+Controller --> View : View data profil terbaru
+View --> Mahasiswa : Menampilkan informasi profil terbaru
+
+@enduml

@@ -4,26 +4,30 @@ node "User Device" {
   [Web Browser]
 }
 
-node "Reztopia Hosting Server" {
-  package "Reztopia Web App" {
-    [Reztopia POS]
+node "Reztopia BackOffice Hosting Server" {
+  package "Web Appss" {
     [Reztopia BackOffice]
   }
 
-  database "Database" {
-    [phpMyAdmin]
+  database "DBSM" {
+    [MySql]
   }
 
   cloud "RESTful" {
-    [Postman]
+    [JSON]
   }
 }
 
-[Web Browser] ..> [Reztopia POS]: Accesses
-[Web Browser] ..> [Reztopia BackOffice]: Accesses
+node "Reztopia POS Hosting Server" {
+  package "Web Apps" {
+    [Reztopia POS]
+}
 
-[Reztopia POS] -- [Postman]: Connects through
-[Reztopia BackOffice] -- [Postman]: Connects through
+[Web Browser] ..> [Reztopia POS]
+[Web Browser] ..> [Reztopia BackOffice]
 
-[Postman] -- [phpMyAdmin]: Manages
+[Reztopia POS] ..> [JSON]
+[Reztopia BackOffice] -- [JSON] 
+
+[JSON] -- [MySql]
 @enduml

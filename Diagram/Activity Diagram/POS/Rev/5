@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam activity {
+  BorderColor DarkSlateGray
+  BackgroundColor LightBlue
+  FontColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+
+|Mahasiswa|
+start
+:Input url Reztopia POS;
+:Login Reztopia POS;
+|Reztopia POS|
+:Menampilkan halaman utama;
+|Mahasiswa|
+:Klik navbar transaksi;
+|Reztopia POS|
+:Menampilkan halaman transaksi;
+|Mahasiswa|
+:Klik salah satu detail transaksi;
+|Reztopia POS|
+:Menampilkan detai transaksi;
+stop
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Memilih Tenant dan Menu di Order Page
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n HomePage" as OrderPage #ADD8E6
+participant "<<Controller>> \n OrderController" as Sistem #ADD8E6
+participant "<<Model>> \n Outlets" as Database #ADD8E6
+participant "<<Model>> \n Categories" as Categories #ADD8E6
+participant "<<Model>> \n Products" as Products #ADD8E6
+
+Mahasiswa -> OrderPage : Masuk Reztopia POS
+OrderPage -> Sistem : Get daftar tenant
+Sistem -> Database : Request outlets data
+Database --> Sistem : Response outlets data
+Database --> Sistem : Response outlets data
+Sistem --> OrderPage : View daftar tenant
+OrderPage --> Mahasiswa : Tampilkan daftar tenant
+
+Mahasiswa -> OrderPage : Klik salah satu tenant
+OrderPage -> Sistem : Get Tenant dipilih
+Sistem -> Database : Request outlets data
+Database -> Categories : Request Categories data
+Categories -> Products : Request Products data
+Products --> Categories : Response Products data
+Categories --> Database : Response Categories data
+Database --> Sistem : Response outlets data
+Sistem --> OrderPage : View menu tenant
+OrderPage --> Mahasiswa : Tampilkan daftar menu tenant
+
+Mahasiswa -> OrderPage : Klik salah satu menu
+OrderPage -> Sistem : Get menu tenant
+Sistem -> Database : Request orders data
+Database -> Categories : Request Categories data
+Categories -> Products : Request Products data
+Products --> Categories : Response Products data
+Categories --> Database : Response Categories data
+Database --> Sistem : Response orders data
+Sistem --> OrderPage : menu berhasil ditambahkan
+OrderPage --> Mahasiswa : Tampilkan pesan menu berhasil ditambahkan
+
+
+@enduml

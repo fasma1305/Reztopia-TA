@@ -10,12 +10,14 @@ skinparam activity {
 
 |Mahasiswa|
 start
-:Memilih opsi "Register";
+:Input url Reztopia POS;
+:Klik button "Register";
 |Reztopia POS|
 :Menampilkan halaman pendaftaran;
 |Mahasiswa|
-:Memasukkan data diri;
-:Memasukkan data email dan password;
+:input data nama,
+email dan password;
+:Klik button "Membuat Akun";
 |Reztopia POS|
 :Memvalidasi data;
 if (Data valid?) then (yes)

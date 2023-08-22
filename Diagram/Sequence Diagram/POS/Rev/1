@@ -1,0 +1,26 @@
+@startuml
+
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n RegisterPage" as View #ADD8E6
+participant "<<Controller>> \n AuthController" as Controller #ADD8E6
+participant "<<Model>> \n Users" as Users #ADD8E6
+
+Mahasiswa -> View : Input Nama, Email, Password
+View -> Controller : Post Nama, Email, Password
+Controller -> Users : Users data
+Users --> Controller : Nama, Email, Password sudah ada
+Controller --> View : Registrasi Gagal
+View --> Mahasiswa : Tampilkan Pesan "Registrasi Gagal"
+
+Users --> Controller : Nama, Email, Password belum ada
+Controller --> View : Registrasi Berhasil
+View --> Mahasiswa : Tampilkan Pesan "Registrasi Berhasil"
+
+@enduml

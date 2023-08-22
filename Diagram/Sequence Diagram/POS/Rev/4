@@ -1,0 +1,45 @@
+@startuml
+
+' Konfigurasi Tampilan
+skinparam shadowing false
+skinparam roundcorner 20
+skinparam sequence {
+    BorderColor DarkSlateGray
+    BackgroundColor LightBlue
+    FontColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+' Memeriksa dan melengkapi keranjang di Halaman Keranjang
+actor "Mahasiswa" as Mahasiswa #ADD8E6
+participant "<<View>> \n CartPage" as View #ADD8E6
+participant "<<Controller>> \n CartController" as Controller #ADD8E6
+participant "<<Model>> \n Orders" as Orders #ADD8E6
+participant "<<Model>> \n Order_Details" as OrderDetails #ADD8E6
+
+Mahasiswa -> View : Klik navbar keranjang
+View -> Controller : GET informasi pesanan
+Controller -> Orders : Request orders data
+Orders -> OrderDetails : Request order_details data
+OrderDetails --> Orders : Response order_details data
+Orders --> Controller : Response orders data
+Controller --> View : View informasi pesanan
+View --> Mahasiswa : Tampilkan informasi pesanan
+
+Mahasiswa -> View : Edit informasi pesanan
+View -> Controller : POST perubahan informasi pesanan
+Controller -> Orders : Update orders data
+Orders -> OrderDetails : Request order_details data
+OrderDetails --> Orders : Response order_details data
+Orders --> Controller : Response orders data
+Controller --> View : Update informasi pesanan
+View --> Mahasiswa : Tampilkan informasi pesanan terbaru
+
+Mahasiswa -> View : Klik button “Pesan”
+View -> Controller : POST informasi pesanan
+Controller -> Orders : Update orders data
+Orders --> Controller : Response orders data
+Controller --> View : redirect transaction Page
+View --> Mahasiswa : Mengalihkan ke transaction Page
+
+@enduml
